@@ -1,11 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <windows.h>
+#include <stdlib.h>
+
 
 LPSTR NazwaKlasy = "Klasa Okienka";
 MSG Komunikat;
 HWND g_hPrzycisk;
 HBITMAP hbmObraz;
+HWND hStatic;
 
 //hbmObraz =( HBITMAP ) LoadImage( NULL, "C:\Users\user\Desktop\kot1300.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
 
@@ -14,7 +17,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam );
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow )
 {
 
-    // WYPE£NIANIE STRUKTURY
+    // WYPEÂ£NIANIE STRUKTURY
     WNDCLASSEX wc;
 
     wc.cbSize = sizeof( WNDCLASSEX );
@@ -39,18 +42,23 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
     }
 
     // TWORZENIE OKNA
-     HANDLE hOut;
+        Sleep(520);
 
-
-    hOut = GetStdHandle( STD_OUTPUT_HANDLE );
 
     HWND hwnd;
-
+        Sleep(567);
     hwnd = CreateWindowEx( WS_EX_CLIENTEDGE, NazwaKlasy, "Buahahaha", WS_OVERLAPPEDWINDOW,
     CW_USEDEFAULT, CW_USEDEFAULT, 900, 600, NULL, NULL, hInstance, NULL );
 
+
+    HWND hStatic = CreateWindowEx
+    (0, "STATIC", NULL, WS_CHILD | WS_VISIBLE | BACKGROUND_GREEN | SS_CENTER,
+     5, 20, 900, 600, hwnd, NULL, hInstance, NULL);
+
+     SetWindowText( hStatic, "Ta aplikacja ukarze Tobie najlepsza rzecz na swiecie!!!");
+
     // przycisk
-   g_hPrzycisk = CreateWindowEx( 0, "BUTTON", "Naciœnij mnie", WS_CHILD | WS_VISIBLE,
+   g_hPrzycisk = CreateWindowEx( 0, "BUTTON", "Nacisnij mnie", WS_CHILD | WS_VISIBLE,
     370, 500, 150, 30, hwnd, NULL, hInstance, NULL );
 
     //Obrazek
@@ -75,21 +83,23 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 
 
-    ShowWindow( hwnd, nCmdShow ); // Poka¿ okienko...
+
+
+    ShowWindow( hwnd, nCmdShow ); // PokaÂ¿ okienko...
     UpdateWindow( hwnd );
 
-    // Pêtla komunikatów
+    // PÃªtla komunikatÃ³w
     while( GetMessage( & Komunikat, NULL, 0, 0 ) )
     {
         TranslateMessage( & Komunikat );
         DispatchMessage( & Komunikat );
     }
 
-
+        Sleep(500);
     return Komunikat.wParam;
 }
 
-// OBS£UGA ZDARZEÑ
+// OBSÂ£UGA ZDARZEÃ‘
 LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
     switch( msg )
@@ -97,43 +107,53 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 
     case WM_COMMAND:
         if(( HWND ) lParam == g_hPrzycisk )
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION );
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION );
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION );
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION );
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION);
+            Sleep(500);
+        MessageBox ( hwnd, "Przepraszam", "NIESPODZIANKA!", MB_ICONINFORMATION );
+            Sleep(400);
+        MessageBox ( hwnd, "Ale", "NIESPODZIANKA!", MB_ICONSTOP);
+            Sleep(5900);
+        MessageBox ( hwnd, "Nie", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Uda", "NIESPODZIANKA!", MB_RETRYCANCEL);
+        MessageBox ( hwnd, "Ci", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Sie", "NIESPODZIANKA!", MB_OKCANCEL);
+        MessageBox ( hwnd, "Na", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Razie", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Niczego", "NIESPODZIANKA!", MB_ICONINFORMATION );
+            Sleep(5600);
+        MessageBox ( hwnd, "Otworzyc", "NIESPODZIANKA!", MB_ICONSTOP);
+        MessageBox ( hwnd, "Ale", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Poczekaj", "NIESPODZIANKA!", MB_ICONINFORMATION);
+            Sleep(2000);
+        MessageBox ( hwnd, "Bo", "NIESPODZIANKA!", MB_RETRYCANCEL);
+        MessageBox ( hwnd, "Na", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Koncu", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Jest", "NIESPODZIANKA!", MB_OKCANCEL);
+        MessageBox ( hwnd, "Najlepsza", "NIESPODZIANKA!", MB_ICONINFORMATION );
+        MessageBox ( hwnd, "Rzecz", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Jakiej", "NIESPODZIANKA!", MB_RETRYCANCEL);
+        MessageBox ( hwnd, "Do", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Tej", "NIESPODZIANKA!", MB_RETRYCANCEL);
+        MessageBox ( hwnd, "Pory", "NIESPODZIANKA!", MB_ICONINFORMATION);
+            Sleep(500);
+        MessageBox ( hwnd, "Nie", "NIESPODZIANKA!", MB_ICONSTOP);
+            Sleep(900);
+        MessageBox ( hwnd, "Widziales", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Poczekaj", "NIESPODZIANKA!", MB_ICONINFORMATION );
+        MessageBox ( hwnd, "Az", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Program", "NIESPODZIANKA!", MB_OKCANCEL);
+            Sleep(5700);
+        MessageBox ( hwnd, "Sie", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Odpali", "NIESPODZIANKA!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "Za", "HNIESPODZIANKAa!", MB_ICONINFORMATION);
+        MessageBox ( hwnd, "3", "NIESPODZIANKA!", MB_OKCANCEL);
+        MessageBox ( hwnd, "2", "NIESPODZIANKA!", MB_ICONSTOP);
+            Sleep(1000);
         DestroyWindow( hwnd );
         break;
 
     case WM_CLOSE:
-        MessageBox ( hwnd, "Przegra³eœ", "Ha!", MB_ICONINFORMATION );
+        MessageBox ( hwnd, "NIE NA TYM TO POLEGA", "Ha!", MB_ICONINFORMATION );
+            Sleep(800);
         break;
 
     case WM_DESTROY:
@@ -146,3 +166,4 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
 
     return 0;
 }
+
