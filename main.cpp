@@ -10,7 +10,7 @@ HWND g_hPrzycisk;
 HBITMAP hbmObraz;
 HWND hStatic;
 
-//hbmObraz =( HBITMAP ) LoadImage( NULL, "C:\Users\user\Desktop\kot1300.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
+hbmObraz =( HBITMAP ) LoadImage( NULL, "C:\Users\user\Desktop\kot1300.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
 
 LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam );
 
@@ -63,22 +63,22 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
     //Obrazek
 
-  // HBITMAP hbmObraz, hbmOld, hbmMaska;
-    //hbmObraz =( HBITMAP ) LoadImage( NULL, "obrazek.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
-    //HDC hdc = GetDC( hwnd ), hdcNowy = CreateCompatibleDC( hdc );
-    //BITMAP bmInfo;
+   HBITMAP hbmObraz, hbmOld, hbmMaska;
+    hbmObraz =( HBITMAP ) LoadImage( NULL, "obrazek.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
+    HDC hdc = GetDC( hwnd ), hdcNowy = CreateCompatibleDC( hdc );
+    BITMAP bmInfo;
 
-    //GetObject( hbmObraz, sizeof( bmInfo ), & bmInfo );
-    //hbmOld =( HBITMAP ) SelectObject( hdcNowy);
+    GetObject( hbmObraz, sizeof( bmInfo ), & bmInfo );
+    hbmOld =( HBITMAP ) SelectObject( hdcNowy);
 
-    //BitBlt( hdc, 0, 0, bmInfo.bmWidth, bmInfo.bmHeight, hdcNowy, 0, 0, SRCAND );
-    //SelectObject( hdcNowy, hbmObraz );
-    //BitBlt( hdc, 0, 0, bmInfo.bmWidth, bmInfo.bmHeight, hdcNowy, 0, 0, SRCPAINT );
+    BitBlt( hdc, 0, 0, bmInfo.bmWidth, bmInfo.bmHeight, hdcNowy, 0, 0, SRCAND );
+    SelectObject( hdcNowy, hbmObraz );
+    BitBlt( hdc, 0, 0, bmInfo.bmWidth, bmInfo.bmHeight, hdcNowy, 0, 0, SRCPAINT );
 
-    //ReleaseDC( hwnd, hdc );
-    //SelectObject( hdcNowy, hbmOld );
-    //DeleteDC( hdcNowy );
-    //DeleteObject( hbmObraz );
+    ReleaseDC( hwnd, hdc );
+    SelectObject( hdcNowy, hbmOld );
+    DeleteDC( hdcNowy );
+    DeleteObject( hbmObraz );
 
 
 
@@ -150,6 +150,32 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
             Sleep(1000);
         DestroyWindow( hwnd );
         break;
+            
+    case WM_PAINT:
+{
+    PAINTSTRUCT ps; // deklaracja struktury
+    HDC hdc = BeginPaint( hwnd, & ps );
+    
+    HBITMAP hbmObraz, hbmOld, hbmMaska;
+    hbmObraz =( HBITMAP ) LoadImage( NULL, "obrazek.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
+    HDC hdc = GetDC( hwnd ), hdcNowy = CreateCompatibleDC( hdc );
+    BITMAP bmInfo;
+
+    GetObject( hbmObraz, sizeof( bmInfo ), & bmInfo );
+    hbmOld =( HBITMAP ) SelectObject( hdcNowy);
+
+    BitBlt( hdc, 0, 0, bmInfo.bmWidth, bmInfo.bmHeight, hdcNowy, 0, 0, SRCAND );
+    SelectObject( hdcNowy, hbmObraz );
+    BitBlt( hdc, 0, 0, bmInfo.bmWidth, bmInfo.bmHeight, hdcNowy, 0, 0, SRCPAINT );
+
+    ReleaseDC( hwnd, hdc );
+    SelectObject( hdcNowy, hbmOld );
+    DeleteDC( hdcNowy );
+    DeleteObject( hbmObraz );
+    
+    EndPaint( hwnd, & ps ); // zwalniamy hdc
+}
+break;
 
     case WM_CLOSE:
         MessageBox ( hwnd, "NIE NA TYM TO POLEGA", "Ha!", MB_ICONINFORMATION );
