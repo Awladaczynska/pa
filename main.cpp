@@ -62,7 +62,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
     //Obrazek
 
    HBITMAP hbmObraz, hbmOld, hbmMaska;
-    hbmObraz =( HBITMAP ) LoadImage( NULL, "obrazek.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
+    hbmObraz =( HBITMAP ) LoadImage( NULL, "C:\Users\user\Desktop\kot1300.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
     HDC hdc = GetDC( hwnd ), hdcNowy = CreateCompatibleDC( hdc );
     BITMAP bmInfo;
 
@@ -155,7 +155,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam )
     HDC hdc = BeginPaint( hwnd, & ps );
     
     HBITMAP hbmObraz, hbmOld, hbmMaska;
-    hbmObraz =( HBITMAP ) LoadImage( NULL, "obrazek.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
+    hbmObraz =( HBITMAP ) LoadImage( NULL, "C:\Users\user\Desktop\kot1300.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE );
     HDC hdc = GetDC( hwnd ), hdcNowy = CreateCompatibleDC( hdc );
     BITMAP bmInfo;
 
