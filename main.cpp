@@ -1,7 +1,5 @@
-#include <iostream>
-#include <cstdlib>
 #include <windows.h>
-#include <stdlib.h>
+
 
 
 LPSTR NazwaKlasy = "Klasa Okienka";
